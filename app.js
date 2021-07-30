@@ -1,15 +1,13 @@
-const http = require('http')
+var http = require("http");
+var fs = require("fs");
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/'){
-    res.end('Home Page')
-  }
-  if (req.url === '/about'){
-    res.end('About Page')
-  }
+http.createServer(function (req, res) {
+  const fileStream = fs.createReadStream("./content/big.txt", "utf8");
+  fileSystem.on("open", () => {
+    fileSystem.pipe();
+  });
 
-})
-
-server.listen(5000, () => {
-  console.log('Server is listening on port 5000')
-})
+  fileSystem.on("error", (error) => {
+    res.end(error);
+  });
+});
